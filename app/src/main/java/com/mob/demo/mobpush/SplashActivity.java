@@ -12,7 +12,11 @@ import com.mob.pushsdk.MobPushUtils;
 
 import org.json.JSONArray;
 
-
+/**
+* @Description: 闪屏页
+* @Date: 2022年12月31日 Saturday
+* @Author liuyuqi.gov@msn.
+*/
 public class SplashActivity extends Activity {
 	private Handler handler = new Handler() {
 		@Override
@@ -27,6 +31,7 @@ public class SplashActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.act_splash);
+		
 		handler.sendEmptyMessageDelayed(0, 3000);
 
 		dealPushResponse(getIntent());

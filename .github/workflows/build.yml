@@ -1,0 +1,48 @@
+name: CI
+on:
+  push:
+    branches: [ master , main]
+  pull_request:
+    branches: [ master , main]
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    runs-on: ${{matrix.os}}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Java JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: "11"
+
+      - name: Setup gradle
+        uses: eskatos/gradle-command-action@v1
+        with:
+          gradle-version: 7.3.3
+
+      - name: Flutter action
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          channel: "stable"
+          flutter-version: "3.0.5"
+      
+      - name: Cache Dependencies
+        id: cache
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{runner.OS}}-gradle-caches-${{ hashFiles('pubspec.lock') }}
+
+      - name: Install Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: flutter pub get
+
+      - name: Build apk
+        if: ${{ runner.os == 'Linux' }}
+        run: flutter build apk --debug --split-per-abi

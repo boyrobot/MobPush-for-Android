@@ -40,7 +40,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".JumpActivity">
+        <activity android:name=".JumpActivity"
+                android:exported="true">
 
         </activity>
 

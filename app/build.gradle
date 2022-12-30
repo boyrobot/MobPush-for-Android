@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+apply from: '../buildCommon.gradle'
+apply plugin: 'com.mob.sdk'
+
+try {
+    String tmpParams = getProperty("custom_params")
+    String[] params = tmpParams.split(",")
+    params.each {item->
+        MobSDK.spEdition(item)
+    }
+} catch(Throwable t) {}
+
+// 在MobSDK的扩展中注册MobPush的相关信息
+MobSDK {
+    appKey "2dbe655e88c80"
+    appSecret "a7b9f1918c596eacbff8a172ba8ed158"
+
+    gui true
+
+    MobPush {
+        debugLevel 4
+        devInfo {
+            XIAOMI {
+                appId "2882303761518300242"
+                appKey "5581830029242"
+            }
+
+            HUAWEI {
+                appId "101595257"
+            }
+
+            MEIZU {
+                appId "127372"
+                appKey "3fc6d1acc7ea4f90a0304967ee3a74ae"
+            }
+
+            FCM {
+                //设置默认推送通知显示图标
+                iconRes "@mipmap/default_ic_launcher"
+                version "20.2.0"
+            }
+
+            OPPO {
+                appKey "6303014506164557acc69df6ef14300b"
+                appSecret "c850609d8a0f492f8b9eeca1189aaec2"
+            }
+
+            VIVO {
+                appId "18568"
+                appKey "9b01729c-6140-4ad3-ac79-4c4543e12130"
+            }
+        }
+    }
+}
+
+apply plugin: 'com.google.gms.google-services'

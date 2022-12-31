@@ -221,9 +221,8 @@ public class CommDialog extends Dialog implements OnClickListener{
 			btnRight.setOnTouchListener((v, event) -> {
                 if(event.getAction() == MotionEvent.ACTION_DOWN){
                     v.setBackgroundColor(0xffe8e8e8);
-                } else if (event.getAction() == MotionEvent.ACTION_UP){
+                } else if (event.getAction() == MotionEvent.ACTION_UP)
                     v.setBackgroundColor(Color.WHITE);
-                }
                 return false;
             });
 			btnLinear.addView(btnRight);

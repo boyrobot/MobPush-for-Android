@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.mob.demo.mobpush">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -10,12 +11,13 @@
         android:label="@string/app_name"
         android:logo="@mipmap/ic_launcher"
         android:supportsRtl="true"
+        android:theme="@android:style/Theme.Light.NoTitleBar"
         android:usesCleartextTraffic="true"
-        android:theme="@android:style/Theme.Light.NoTitleBar">
+        tools:targetApi="m">
 
         <activity
-            android:exported="true"
             android:name=".SplashActivity"
+            android:exported="true"
             android:launchMode="singleTask"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
             <intent-filter>
@@ -41,14 +43,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".JumpActivity"
-                android:exported="true">
+        <activity
+            android:name=".JumpActivity"
+            android:exported="true">
 
         </activity>
 
         <activity
-            android:exported="true"
             android:name=".LinkOneActivity"
+            android:exported="true"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -57,11 +60,10 @@
                     android:host="com.mob.mobpush.linkone"
                     android:scheme="mlink" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".LinkTwoActivity"
-                            android:exported="true">
+        <activity
+            android:name=".LinkTwoActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -70,6 +72,7 @@
                     android:scheme="mlink" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="firebase_messaging_auto_init_enabled"
             android:value="false" />

@@ -10,7 +10,7 @@ buildscript {
             allowInsecureProtocol true
             url mavenUrlExt
         }
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
@@ -28,7 +28,7 @@ buildscript {
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
         google()
         maven {
             allowInsecureProtocol true
@@ -47,7 +47,7 @@ ext{
 
     minSdkVersion = 19
     targetSdkVersion = 32
-    versionCode = 1
-    versionName = "1.0.0"
+    versionCode = 10001
+    versionName = "1.0.1"
 }
 

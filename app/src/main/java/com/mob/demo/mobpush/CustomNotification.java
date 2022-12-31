@@ -32,7 +32,7 @@ public class CustomNotification extends MobPushTailorNotification {
 		PendingIntent pi = PendingIntent.getActivity(context, 1001, new Intent(context, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 		//通知必须设置：小图标、标题、内容
 
-		Notification.Builder builder = null;
+		Notification.Builder builder;
 		if (Build.VERSION.SDK_INT >= 26) {
 			NotificationChannel notificationChannel = new NotificationChannel(CHANNELID,
 					CHANNELNAME, NotificationManager.IMPORTANCE_DEFAULT);
@@ -95,32 +95,30 @@ public class CustomNotification extends MobPushTailorNotification {
 		int style = mobPushNotifyMessage.getStyle();
 		String styleContent = mobPushNotifyMessage.getStyleContent();
 		String[] inboxStyleContent = mobPushNotifyMessage.getInboxStyleContent();
-		if (Build.VERSION.SDK_INT >= 16) {
-			if (style == MobPushNotifyMessage.STYLE_BIG_TEXT) {    //大段文本
-				Notification.BigTextStyle textStyle = new Notification.BigTextStyle();
-				textStyle.setBigContentTitle(title).bigText(styleContent);
-				builder.setStyle(textStyle);
-			} else if (style == MobPushNotifyMessage.STYLE_INBOX) {//收件箱
-				Notification.InboxStyle textStyle = new Notification.InboxStyle();
-				textStyle.setBigContentTitle(title);
-				if (inboxStyleContent != null && inboxStyleContent.length > 0) {
-					for (String item : inboxStyleContent) {
-						if (item == null) {
-							item = "";
-						}
-						textStyle.addLine(item);
-					}
-				}
-				builder.setStyle(textStyle);
-			} else if (style == MobPushNotifyMessage.STYLE_BIG_PICTURE) {//大图类型
-				Notification.BigPictureStyle textStyle = new Notification.BigPictureStyle();
-				Bitmap bitmap = BitmapFactory.decodeFile(styleContent);
-				if (bitmap != null) {
-					textStyle.setBigContentTitle(title).bigPicture(bitmap);
-				}
-				builder.setStyle(textStyle);
-			}
-		}
-		return Build.VERSION.SDK_INT >= 16 ? builder.build() : builder.getNotification();
+        if (style == MobPushNotifyMessage.STYLE_BIG_TEXT) {    //大段文本
+            Notification.BigTextStyle textStyle = new Notification.BigTextStyle();
+            textStyle.setBigContentTitle(title).bigText(styleContent);
+            builder.setStyle(textStyle);
+        } else if (style == MobPushNotifyMessage.STYLE_INBOX) {//收件箱
+            Notification.InboxStyle textStyle = new Notification.InboxStyle();
+            textStyle.setBigContentTitle(title);
+            if (inboxStyleContent != null && inboxStyleContent.length > 0) {
+                for (String item : inboxStyleContent) {
+                    if (item == null) {
+                        item = "";
+                    }
+                    textStyle.addLine(item);
+                }
+            }
+            builder.setStyle(textStyle);
+        } else if (style == MobPushNotifyMessage.STYLE_BIG_PICTURE) {//大图类型
+            Notification.BigPictureStyle textStyle = new Notification.BigPictureStyle();
+            Bitmap bitmap = BitmapFactory.decodeFile(styleContent);
+            if (bitmap != null) {
+                textStyle.setBigContentTitle(title).bigPicture(bitmap);
+            }
+            builder.setStyle(textStyle);
+        }
+        return builder.build();
 	}
 }

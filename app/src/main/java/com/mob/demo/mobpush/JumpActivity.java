@@ -42,7 +42,7 @@ public class JumpActivity extends Activity {
 	}
 
 	private void initData(Intent intent){
-		String data = "Callback Data:\n";
+		StringBuilder data = new StringBuilder("Callback Data:\n");
 		if(intent != null){
 			Bundle bundle = intent.getExtras();
 			if(bundle != null){
@@ -50,25 +50,25 @@ public class JumpActivity extends Activity {
 				for(String key : set){
 					Object obj = bundle.get(key);
 					if(obj instanceof String){
-						data = data + "key:" + key + "   value:" + bundle.getString(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getString(key)).append("\n");
 					} else if(obj instanceof Integer){
-						data = data + "key:" + key + "   value:" + bundle.getInt(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getInt(key)).append("\n");
 					} else if(obj instanceof Float){
-						data = data + "key:" + key + "   value:" + bundle.getFloat(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getFloat(key)).append("\n");
 					} else if(obj instanceof Double){
-						data = data + "key:" + key + "   value:" + bundle.getDouble(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getDouble(key)).append("\n");
 					} else if(obj instanceof Long){
-						data = data + "key:" + key + "   value:" + bundle.getLong(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getLong(key)).append("\n");
 					} else if(obj instanceof Short){
-						data = data + "key:" + key + "   value:" + bundle.getShort(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getShort(key)).append("\n");
 					} else if(obj instanceof Byte){
-						data = data + "key:" + key + "   value:" + bundle.getByte(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getByte(key)).append("\n");
 					} else if(obj instanceof Boolean){
-						data = data + "key:" + key + "   value:" + bundle.getBoolean(key) + "\n";
+						data.append("key:").append(key).append("   value:").append(bundle.getBoolean(key)).append("\n");
 					}
 				}
 			}
 		}
-		textView.setText(data);
+		textView.setText(data.toString());
 	}
 }

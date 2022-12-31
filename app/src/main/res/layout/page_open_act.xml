@@ -29,7 +29,9 @@
         android:maxLines="100"
         android:textColor="#686C7B"
         android:textColorHint="#B8BCC9"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:inputType="TODO"
+        android:autofillHints="" />
 
     <View
         android:layout_width="match_parent"

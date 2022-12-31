@@ -9,7 +9,8 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:scaleType="center"
-        android:src="@drawable/ic_back"/>
+        android:src="@drawable/ic_back"
+        android:contentDescription="TODO" />
 
 
     <TextView

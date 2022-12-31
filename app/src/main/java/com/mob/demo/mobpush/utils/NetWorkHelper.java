@@ -21,12 +21,12 @@ public class NetWorkHelper {
 				// 建立网络数组
 				NetworkInfo[] netInfo = connectivityManager.getAllNetworkInfo();
 				if (netInfo != null && netInfo.length > 0) {
-					for (int i = 0; i < netInfo.length; i++) {
-						// 判断获得的网络状态是否是处于连接状态
-						if (netInfo[i].getState() == NetworkInfo.State.CONNECTED) {
-							return true;
-						}
-					}
+                    for (NetworkInfo networkInfo : netInfo) {
+                        // 判断获得的网络状态是否是处于连接状态
+                        if (networkInfo.getState() == NetworkInfo.State.CONNECTED) {
+                            return true;
+                        }
+                    }
 				}
 			}
 		} catch (Throwable e){

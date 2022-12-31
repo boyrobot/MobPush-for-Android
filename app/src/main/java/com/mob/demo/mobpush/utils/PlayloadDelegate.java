@@ -51,7 +51,7 @@ public class PlayloadDelegate {
             if (keySet == null || keySet.isEmpty()) {
                 return;
             }
-            HashMap<String, Object> map = new HashMap<String, Object>();
+            HashMap<String, Object> map = new HashMap<>();
             for (String key : keySet) {
                 System.out.println("MobPush playload bundle------------->" + key);
                 System.out.println("MobPush playload bundle------------->" + bundle.get(key));
@@ -82,7 +82,7 @@ public class PlayloadDelegate {
         if (map == null) {
             return;
         }
-        String json = "";
+        StringBuilder json = new StringBuilder();
 
         Set<String> keys = map.keySet();
         for (String key : keys) {
@@ -96,7 +96,7 @@ public class PlayloadDelegate {
         for (String key : keys) {
             if (!"profile".equals(key) && !"workId".equals(key)
                     && !"collapse_key".equals(key) && !key.startsWith("google.") && !"from".equals(key)) {
-                json += "key: " + key + ", value: " + map.get(key) + "\n";
+                json.append("key: ").append(key).append(", value: ").append(map.get(key)).append("\n");
             }
         }
 
@@ -109,13 +109,11 @@ public class PlayloadDelegate {
                 openUrl(context, map);
             } else if (map.containsKey(MOB_PUSH_NORMAL_SCHEME_PLAYLOAD_KEY)) {
                 System.out.println(">>>>>>>>>>scheme Activity with playload data: " + MOB_PUSH_NORMAL_SCHEME_PLAYLOAD_KEY + ", value: " + map.get(MOB_PUSH_NORMAL_SCHEME_PLAYLOAD_KEY));
-            } else {
-
             }
         }
     }
 
-    private HashMap<String, Object> parseOPPOPlayload(Bundle bundle) {
+    private HashMap parseOPPOPlayload(Bundle bundle) {
         HashMap hashMap = null;
         String v = String.valueOf(bundle.get(MOB_PUSH_OPPO_EXTRA_DATA));
         if (!TextUtils.isEmpty(v)) {
@@ -124,7 +122,7 @@ public class PlayloadDelegate {
         return hashMap;
     }
 
-    private HashMap<String, Object> parseNormalPlayload(Bundle bundle) {
+    private HashMap parseNormalPlayload(Bundle bundle) {
         HashMap hashMap = null;
         MobPushNotifyMessage notifyMessage = (MobPushNotifyMessage) bundle.getSerializable(MOB_PUSH_NORMAL_PLAYLOAD_KEY);
         if (notifyMessage != null) {

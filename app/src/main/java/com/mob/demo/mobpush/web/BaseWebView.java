@@ -21,12 +21,10 @@ public class BaseWebView extends WebView {
 	public BaseWebView(Context context, AttributeSet attrs, int defStyleAttr) {
 		super(context, attrs, defStyleAttr);
 		initSettings();
-		if (Build.VERSION.SDK_INT >= 11) {
-			removeJavascriptInterface("searchBoxJavaBridge_");
-			removeJavascriptInterface("accessibility");
-			removeJavascriptInterface("accessibilityTraversal");
-		}
-	}
+        removeJavascriptInterface("searchBoxJavaBridge_");
+        removeJavascriptInterface("accessibility");
+        removeJavascriptInterface("accessibilityTraversal");
+    }
 
 	private void initSettings() {
 		WebSettings settings = getSettings();

@@ -13,8 +13,6 @@ import com.mob.pushsdk.MobPushUtils;
 
 import org.json.JSONArray;
 
-import java.util.Set;
-
 /**
  * scheme指定界面跳转目标页-指定界面1
  * 推送时通过scheme指定界面跳转，在AndroidManifest.xml文件中配置示例：
@@ -85,18 +83,15 @@ public class LinkOneActivity extends Activity implements View.OnClickListener {
 		//获取link界面传输的数据
 		JSONArray jsonArray = MobPushUtils.parseSchemePluginPushIntent(intent);
 		if (jsonArray != null){
-			sb.append("\n" + "bundle toString :" + jsonArray.toString());
+			sb.append("\n" + "bundle toString :" + jsonArray);
 		}
 		tv.setText(sb);
 	}
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-			case R.id.ivBack: {
-				finish();
-			}
-			break;
-		}
+        if (v.getId() == R.id.ivBack) {
+            finish();
+        }
 	}
 }

@@ -70,18 +70,15 @@ public class LinkTwoActivity extends Activity implements View.OnClickListener {
 		//获取link界面传输的数据
 		JSONArray jsonArray = MobPushUtils.parseSchemePluginPushIntent(intent);
 		if (jsonArray != null) {
-			sb.append("\n" + "bundle toString :" + jsonArray.toString());
+			sb.append("\n" + "bundle toString :" + jsonArray);
 		}
 		tv.setText(sb);
 	}
 
 	@Override
 	public void onClick(View v) {
-		switch (v.getId()) {
-			case R.id.ivBack: {
-				finish();
-			}
-			break;
-		}
+        if (v.getId() == R.id.ivBack) {
+            finish();
+        }
 	}
 }

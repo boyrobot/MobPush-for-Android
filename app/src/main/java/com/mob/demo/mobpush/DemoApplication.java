@@ -65,38 +65,32 @@ public class DemoApplication extends MobApplication {
 			}
 		});
 
-		handler = new Handler(new Handler.Callback() {
-			@Override
-			public boolean handleMessage(Message msg) {
-				if (msg.what == 1) {
-					Toast.makeText(MobSDK.getContext(), "回调信息\n" + (String) msg.obj, Toast.LENGTH_LONG).show();
-					System.out.println("Callback Data:" + msg.obj);
-				}
-				return false;
-			}
-		});
+		handler = new Handler(msg -> {
+            if (msg.what == 1) {
+                Toast.makeText(MobSDK.getContext(), "回调信息\n" + (String) msg.obj, Toast.LENGTH_LONG).show();
+                System.out.println("Callback Data:" + msg.obj);
+            }
+            return false;
+        });
 	}
 
 	private void submitPolicyGrantResult() {
-		Executors.newSingleThreadExecutor().execute(new Runnable() {
-			@Override
-			public void run() {
-				if (MobSDK.isForb()) {
-					//同意隐私协议
-					MobSDK.submitPolicyGrantResult(true, new OperationCallback<Void>() {
-						@Override
-						public void onComplete(Void aVoid) {
-							Log.d("Mobpush", "submitPolicyGrantResult  onComplete");
-						}
+		Executors.newSingleThreadExecutor().execute(() -> {
+            if (MobSDK.isForb()) {
+                //同意隐私协议
+                MobSDK.submitPolicyGrantResult(true, new OperationCallback<Void>() {
+                    @Override
+                    public void onComplete(Void aVoid) {
+                        Log.d("Mobpush", "submitPolicyGrantResult  onComplete");
+                    }
 
-						@Override
-						public void onFailure(Throwable throwable) {
-							Log.d("Mobpush", "submitPolicyGrantResult  onFailure");
-						}
-					});
-				}
-			}
-		});
+                    @Override
+                    public void onFailure(Throwable throwable) {
+                        Log.d("Mobpush", "submitPolicyGrantResult  onFailure");
+                    }
+                });
+            }
+        });
 
 	}
 

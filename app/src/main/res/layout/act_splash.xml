@@ -30,7 +30,8 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_above="@+id/tv"
-        android:src="@mipmap/big_icon"/>
+        android:src="@mipmap/big_icon"
+        android:contentDescription="TODO" />
 
     <ImageView
         android:layout_centerHorizontal="true"

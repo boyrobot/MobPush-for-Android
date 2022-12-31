@@ -53,7 +53,6 @@ public class DialogShell {
 
 	/**
 	 * 发送按钮提示框
-	 * @param phone
 	 * @return 返回确定按钮
 	 */
 	public Button sendDialog(String phone) {
@@ -162,15 +161,12 @@ public class DialogShell {
 		try {
 			dialog.show();
 		} catch (Throwable t){}
-		new Handler().postDelayed(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					dialog.dismiss();
-				} catch (Throwable t){}
+		new Handler().postDelayed(() -> {
+            try {
+                dialog.dismiss();
+            } catch (Throwable t){}
 
-			}
-		}, second * 1000);
+        }, second * 1000L);
 		return dialog;
 	}
 

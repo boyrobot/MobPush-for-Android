@@ -51,7 +51,9 @@
             android:singleLine="true"
             android:textColor="#0076FF"
             android:textColorHint="#A6A6B2"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:inputType="TODO"
+            android:autofillHints="" />
 
     </LinearLayout>
 
@@ -86,7 +88,9 @@
         android:maxLength="35"
         android:textColor="#333333"
         android:textColorHint="#6e6f78"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:inputType="TODO"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/btnTest"

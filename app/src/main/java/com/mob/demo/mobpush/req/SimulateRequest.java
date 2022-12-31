@@ -78,7 +78,7 @@ public class SimulateRequest {
                     }
                     return;
                 }
-                HashMap<String, Object> commonMap = new HashMap<String, Object>();
+                HashMap<String, Object> commonMap = new HashMap<>();
                 commonMap.put("plat", 1);
                 commonMap.put("registrationId", regId);
                 commonMap.put("msgType", type);

@@ -94,7 +94,7 @@ public class PageLocal extends FakeActivity implements View.OnClickListener {
 				notification.setTitle(TextUtils.isEmpty(appName) ? getContext().getString(R.string.item_local) : appName);
 				notification.setContent(content);
 				notification.setNotificationId(new Random().nextInt());
-				notification.setTimestamp(currentChooseTime * 60 * 1000 + System.currentTimeMillis());
+				notification.setTimestamp((long) currentChooseTime * 60 * 1000 + System.currentTimeMillis());
 				notification.setNotifySound(soundName);
 				MobPush.addLocalNotification(notification);
 				new DialogShell(getContext()).autoDismissDialog(R.string.toast_timing, currentChooseTime + "min", 2);

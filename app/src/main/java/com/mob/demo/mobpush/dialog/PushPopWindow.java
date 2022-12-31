@@ -31,14 +31,10 @@ public class PushPopWindow extends PopupWindow {
 		setTouchable(true);
 
 		View contentView = LayoutInflater.from(context).inflate(R.layout.pop_push_message, null);
-		contentView.findViewById(R.id.btnKnown).setOnClickListener(new View.OnClickListener() {
-			public void onClick(View v) {
-				dismiss();
-			}
-		});
+		contentView.findViewById(R.id.btnKnown).setOnClickListener(v -> dismiss());
 
 		setContentView(contentView);
-		TextView tvContent = (TextView) contentView.findViewById(R.id.tvContent);
+		TextView tvContent = contentView.findViewById(R.id.tvContent);
 		tvContent.setText(message);
 	}
 

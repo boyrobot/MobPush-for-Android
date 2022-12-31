@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Toast;
 
 import com.mob.MobSDK;
 import com.mob.pushsdk.MobPushUtils;
@@ -18,7 +17,7 @@ import org.json.JSONArray;
 * @Author liuyuqi.gov@msn.
 */
 public class SplashActivity extends Activity {
-	private Handler handler = new Handler() {
+	private final Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			Intent intent = new Intent(SplashActivity.this, MainActivity.class);

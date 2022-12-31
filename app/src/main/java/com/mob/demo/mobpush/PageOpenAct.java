@@ -64,7 +64,7 @@ public class PageOpenAct extends FakeActivity implements View.OnClickListener {
 			case R.id.tvNotify: {
 				initView();
 				((TextView) v).setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_choose, 0);
-				openType = Integer.valueOf((String) v.getTag());
+				openType = Integer.parseInt((String) v.getTag());
 			}
 			break;
 			case R.id.btnTest: {

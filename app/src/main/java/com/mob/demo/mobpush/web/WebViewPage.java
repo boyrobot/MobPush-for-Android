@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.net.http.SslError;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -14,8 +13,6 @@ import android.view.View;
 import android.view.Window;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -23,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mob.demo.mobpush.utils.SizeHelper;
 import com.mob.tools.FakeActivity;
@@ -96,16 +92,13 @@ public class WebViewPage extends FakeActivity {
 		});
 
 		webView.loadUrl(url);
-		ivBack.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				if (webView != null && webView.canGoBack()) {
-					webView.goBack();
-				} else {
-					finishOnSuccess();
-				}
-			}
-		});
+		ivBack.setOnClickListener(view -> {
+            if (webView != null && webView.canGoBack()) {
+                webView.goBack();
+            } else {
+                finishOnSuccess();
+            }
+        });
 	}
 
 	@SuppressLint("WrongConstant")

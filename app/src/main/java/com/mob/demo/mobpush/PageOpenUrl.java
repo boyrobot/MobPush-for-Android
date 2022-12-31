@@ -65,7 +65,7 @@ public class PageOpenUrl extends FakeActivity implements View.OnClickListener{
 					Toast.makeText(getContext(), R.string.toast_input_not_allowed_null, Toast.LENGTH_SHORT).show();
 					return;
 				}
-				SimulateRequest.sendPush(1, content, 0, extras.toString(), new MobPushCallback<Boolean>() {
+				SimulateRequest.sendPush(1, content, 0, extras, new MobPushCallback<Boolean>() {
 					public void onCallback(Boolean result) {
 						if(result) {
 							new DialogShell(getContext()).autoDismissDialog(R.string.toast_app_notify, null, 2);

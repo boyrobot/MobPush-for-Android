@@ -33,7 +33,9 @@
         android:maxLines="100"
         android:textColor="#333333"
         android:textColorHint="#6e6f78"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        android:inputType="TODO"
+        android:autofillHints="" />
 
 
     <TextView

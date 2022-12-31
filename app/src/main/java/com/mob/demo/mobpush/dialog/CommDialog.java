@@ -161,21 +161,15 @@ public class CommDialog extends Dialog implements OnClickListener{
 			btn.setTextColor(0xff2975fe);
 			btn.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(24));
 			btn.setBackgroundColor(Color.WHITE);
-			btn.setOnTouchListener(new View.OnTouchListener() {
-				public boolean onTouch(View v, MotionEvent event) {
-					if(event.getAction() == MotionEvent.ACTION_DOWN){
-						v.setBackgroundColor(0xffe8e8e8);
-					} else if (event.getAction() == MotionEvent.ACTION_UP){
-						v.setBackgroundColor(Color.WHITE);
-					}
-					return false;
-				}
-			});
-			btn.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					dismiss();
-				}
-			});
+			btn.setOnTouchListener((v, event) -> {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    v.setBackgroundColor(0xffe8e8e8);
+                } else if (event.getAction() == MotionEvent.ACTION_UP){
+                    v.setBackgroundColor(Color.WHITE);
+                }
+                return false;
+            });
+			btn.setOnClickListener(v -> dismiss());
 			linear.addView(btn, lp);
 		}
 
@@ -195,21 +189,15 @@ public class CommDialog extends Dialog implements OnClickListener{
 			btnLeft.setText(btnLeftText);
 			btnLeft.setTextColor(0xff2975fe);
 			btnLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(24));
-			btnLeft.setOnTouchListener(new View.OnTouchListener() {
-				public boolean onTouch(View v, MotionEvent event) {
-					if(event.getAction() == MotionEvent.ACTION_DOWN){
-						v.setBackgroundColor(0xffe8e8e8);
-					} else if (event.getAction() == MotionEvent.ACTION_UP){
-						v.setBackgroundColor(Color.WHITE);
-					}
-					return false;
-				}
-			});
-			btnLeft.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					dismiss();
-				}
-			});
+			btnLeft.setOnTouchListener((v, event) -> {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    v.setBackgroundColor(0xffe8e8e8);
+                } else if (event.getAction() == MotionEvent.ACTION_UP){
+                    v.setBackgroundColor(Color.WHITE);
+                }
+                return false;
+            });
+			btnLeft.setOnClickListener(v -> dismiss());
 			btnLinear.addView(btnLeft);
 
 			View lineVertical = new View(getContext());
@@ -229,21 +217,15 @@ public class CommDialog extends Dialog implements OnClickListener{
 			btnRight.setText(btnRightText);
 			btnRight.setTextColor(0xff2975fe);
 			btnRight.setTextSize(TypedValue.COMPLEX_UNIT_PX,SizeHelper.fromPxWidth(24));
-			btnRight.setOnClickListener(new View.OnClickListener() {
-				public void onClick(View v) {
-					dismiss();
-				}
-			});
-			btnRight.setOnTouchListener(new View.OnTouchListener() {
-				public boolean onTouch(View v, MotionEvent event) {
-					if(event.getAction() == MotionEvent.ACTION_DOWN){
-						v.setBackgroundColor(0xffe8e8e8);
-					} else if (event.getAction() == MotionEvent.ACTION_UP){
-						v.setBackgroundColor(Color.WHITE);
-					}
-					return false;
-				}
-			});
+			btnRight.setOnClickListener(v -> dismiss());
+			btnRight.setOnTouchListener((v, event) -> {
+                if(event.getAction() == MotionEvent.ACTION_DOWN){
+                    v.setBackgroundColor(0xffe8e8e8);
+                } else if (event.getAction() == MotionEvent.ACTION_UP){
+                    v.setBackgroundColor(Color.WHITE);
+                }
+                return false;
+            });
 			btnLinear.addView(btnRight);
 
 			linear.addView(btnLinear);

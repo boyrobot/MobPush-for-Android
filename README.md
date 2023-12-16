@@ -1,13 +1,6 @@
-
 # MobPush
-## 一、SDK 信息
-|  项目   | 描述  |
-|  ----  | ----  |
-| SDK名称  | MobPush |
-| SDK版本  | 4.2.1 |
-| SDK大小  | 866kb |
-| SDK MD5  | b6a478d49bed1e5434eb2e6ab608c8a7 |
-| SDK功能  | 通知推送 |
+
+mok 消息推送 app
 
 ## 二、权限说明
 
